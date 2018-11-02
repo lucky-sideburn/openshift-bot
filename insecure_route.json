@@ -1,0 +1,24 @@
+{
+    "apiVersion": "route.openshift.io/v1",
+    "kind": "Route",
+    "metadata": {
+        "labels": {
+            "app": "name"
+        },
+        "name": "name",
+        "namespace": "foobar"
+    },
+    "spec": {
+        "host": "foo.bar",
+        "path": "/",
+        "port": {
+            "targetPort": "8080-tcp"
+        },
+        "to": {
+            "kind": "Service",
+            "name": "ocbotydfd7c",
+            "weight": 100
+        },
+        "wildcardPolicy": "None"
+    }
+}
