@@ -55,7 +55,8 @@ def random_generator(size=6, chars=string.ascii_lowercase + string.digits):
   return ''.join(random.choice(chars) for x in range(size))
 
 def start(bot, update):
-  bot.send_message(chat_id=update.message.chat_id, text="I'm a bot, please talk to me!")
+  bot.send_photo(chat_id=update.message.chat_id, photo=open('openshift.png', 'rb'))
+  bot.send_message(chat_id=update.message.chat_id, text="I'm the Openshift Bot! Please take a picture and I will create a pod for exposing your photo through the internet!")
 
 def echo(bot, update):
   bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
@@ -82,6 +83,7 @@ def photo_handler(bot, update):
   bot.send_document(chat_id=update.message.chat_id, document=open(app_log_file, 'rb'))
   create_route(app_name,app_dir)
   host = app_name + '.94.23.211.122.nip.io'
+  time.sleep(4)
   bot.send_message(chat_id=update.message.chat_id, text="Congratulation! You can reach your webapp to http://" + host)
 
 def build_docker_image(app_name,app_dir,app_log_file,bot,update):
